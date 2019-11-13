@@ -18,7 +18,7 @@ type Mac2VendorServer struct {
 }
 
 func (s *Mac2VendorServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	mac := strings.ToLower(s.stripre.ReplaceAllString(s.macre.FindString(r.RequestURI), ""))
+	mac := strings.ToLower(s.macre.FindString(s.stripre.ReplaceAllString(r.RequestURI, "")))
 
 	ret := s.tree.Get(mac)
 	if ret != nil {
@@ -37,8 +37,8 @@ func main() {
 
 	mac2vendor := &Mac2VendorServer{
 		tree:    t,
-		macre:   regexp.MustCompile("[0-9a-fA-F:-]+"),
-		stripre: regexp.MustCompile("[:-]"),
+		macre:   regexp.MustCompile("[0-9a-fA-F]+"),
+		stripre: regexp.MustCompile("[:.-]"),
 	}
 
 	http.ListenAndServe(":3000", mac2vendor)
