@@ -21,8 +21,8 @@ func (s *Mac2VendorServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	mac := strings.ToLower(s.stripre.ReplaceAllString(s.macre.FindString(r.RequestURI), ""))
 
 	ret := s.tree.Get(mac)
-	if oui, ok := ret.(*OUIDescr); ok {
-		fmt.Fprint(w, oui.vendor)
+	if ret != nil {
+		fmt.Fprint(w, ret.(*OUIDescr).vendor)
 	} else {
 		w.WriteHeader(404)
 	}

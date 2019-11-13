@@ -7,9 +7,8 @@ type Readonly interface {
 
 // Node element of a tree
 type Node struct {
-	nodes    map[rune]*Node
-	hasValue bool
-	value    interface{}
+	nodes map[rune]*Node
+	value interface{}
 }
 
 // New creates a new Node
@@ -29,7 +28,6 @@ func (n *Node) Add(s string, value interface{}) {
 		n = n.nodes[chr]
 	}
 
-	n.hasValue = true
 	n.value = value
 }
 
@@ -43,7 +41,7 @@ func (n *Node) Get(s string) interface{} {
 			break
 		}
 
-		if n.hasValue {
+		if n.value != nil {
 			last = n
 		}
 	}
