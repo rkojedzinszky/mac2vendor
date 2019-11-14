@@ -2,7 +2,7 @@ FROM golang:alpine AS build
 
 RUN mkdir /go/src/mac2vendor
 
-ADD go.mod main.go parse.go /go/src/mac2vendor/
+ADD go.mod main.go parse.go formatters.go /go/src/mac2vendor/
 
 ADD radix /go/src/mac2vendor/radix/
 

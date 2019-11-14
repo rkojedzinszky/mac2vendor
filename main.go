@@ -18,14 +18,28 @@ type Mac2VendorServer struct {
 }
 
 func (s *Mac2VendorServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	mac := strings.ToLower(s.macre.FindString(s.stripre.ReplaceAllString(r.RequestURI, "")))
+	mac := strings.ToLower(s.macre.FindString(s.stripre.ReplaceAllString(r.URL.Path, "")))
 
 	ret := s.tree.Get(mac)
 	if ret != nil {
-		fmt.Fprint(w, ret.(*OUIDescr).vendor)
-	} else {
-		w.WriteHeader(404)
+		q := r.URL.Query()
+		var format string
+
+		if format = q.Get("format"); format == "" {
+			// Default format is plain
+			format = "plain"
+		}
+
+		if f, ok := formatters[format]; ok {
+			f(ret.(*OUIDescr), w)
+			return
+		}
+
+		w.WriteHeader(http.StatusBadRequest)
+		return
 	}
+
+	w.WriteHeader(http.StatusNotFound)
 }
 
 func main() {

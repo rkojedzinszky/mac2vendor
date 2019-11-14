@@ -14,9 +14,9 @@ import (
 
 // OUIDescr describes an OUI entry
 type OUIDescr struct {
-	prefix   string
-	vendor   string
-	comments string
+	Prefix   string `json:"prefix"`
+	Vendor   string `json:"vendor"`
+	Comments string `json:"comments"`
 }
 
 // read a gzip compressed file
@@ -48,12 +48,12 @@ func readOuiFile(ouiPath string) (radix.Readonly, error) {
 		}
 
 		oui := &OUIDescr{
-			prefix:   subs[1],
-			vendor:   subs[2],
-			comments: subs[3],
+			Prefix:   subs[1],
+			Vendor:   subs[2],
+			Comments: subs[3],
 		}
 
-		prefix := oui.prefix
+		prefix := oui.Prefix
 		plen := 24
 
 		pmatch := prefixmatch.FindStringSubmatch(prefix)
