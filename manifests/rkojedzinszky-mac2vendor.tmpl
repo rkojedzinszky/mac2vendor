@@ -10,6 +10,10 @@ manifests:
   platform:
     architecture: arm
     os: linux
+- image: rkojedzinszky/mac2vendor:{{#if build.tag}}{{trimPrefix "v" build.tag}}-{{/if}}arm64
+  platform:
+    architecture: arm64
+    os: linux
 - image: rkojedzinszky/mac2vendor:{{#if build.tag}}{{trimPrefix "v" build.tag}}-{{/if}}amd64
   platform:
     architecture: amd64
