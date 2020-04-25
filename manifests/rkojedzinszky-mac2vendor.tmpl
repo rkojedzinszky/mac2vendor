@@ -6,15 +6,17 @@ tags:
 {{/each}}
 {{/if}}
 manifests:
-- image: rkojedzinszky/mac2vendor:{{#if build.tag}}{{trimPrefix "v" build.tag}}-{{/if}}arm
+- image: rkojedzinszky/mac2vendor:{{#if build.tag}}{{trimPrefix "v" build.tag}}-{{/if}}arm32v7
   platform:
+    os: linux
     architecture: arm
-    os: linux
-- image: rkojedzinszky/mac2vendor:{{#if build.tag}}{{trimPrefix "v" build.tag}}-{{/if}}arm64
+    variant: v7
+- image: rkojedzinszky/mac2vendor:{{#if build.tag}}{{trimPrefix "v" build.tag}}-{{/if}}arm64v8
   platform:
-    architecture: arm64
     os: linux
+    architecture: arm64
+    variant: v8
 - image: rkojedzinszky/mac2vendor:{{#if build.tag}}{{trimPrefix "v" build.tag}}-{{/if}}amd64
   platform:
-    architecture: amd64
     os: linux
+    architecture: amd64
