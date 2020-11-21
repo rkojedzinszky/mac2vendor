@@ -8,7 +8,7 @@ reading the whole content into memory and serving requests over http, replying w
 ## Usage
 
 ```bash
-$ docker run -it --rm -p 3000:3000 rkojedzinszky/mac2vendor
+$ docker run -it --rm -p 3000:3000 ghcr.io/rkojedzinszky/mac2vendor
 ```
 
 To access:

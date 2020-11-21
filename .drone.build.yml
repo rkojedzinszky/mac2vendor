@@ -8,8 +8,9 @@ steps:
 - name: docker
   image: plugins/docker
   settings:
-    repo: rkojedzinszky/mac2vendor
+    repo: ghcr.io/rkojedzinszky/mac2vendor
+    registry: ghcr.io
     username: rkojedzinszky
     password:
-      from_secret: hub_docker_password
+      from_secret: ghcr.io.password
     auto_tag: true

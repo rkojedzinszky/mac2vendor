@@ -10,6 +10,6 @@ steps:
     auto_tag: true
     username: rkojedzinszky
     password:
-      from_secret: hub_docker_password
+      from_secret: ghcr.io.password
 
 depends_on: []
