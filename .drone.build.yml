@@ -6,7 +6,7 @@ platform:
 
 steps:
 - name: docker
-  image: plugins/docker
+  image: plugins/docker:19
   settings:
     repo: ghcr.io/rkojedzinszky/mac2vendor
     registry: ghcr.io

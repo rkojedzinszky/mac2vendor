@@ -4,7 +4,7 @@ kind: pipeline
 name: build-arm64
 platform: {arch: arm64, os: linux, variant: v8}
 steps:
-- image: plugins/docker
+- image: plugins/docker:19
   name: docker
   settings:
     auto_tag: true
@@ -19,7 +19,7 @@ kind: pipeline
 name: build-arm
 platform: {arch: arm, os: linux, variant: v7}
 steps:
-- image: plugins/docker
+- image: plugins/docker:19
   name: docker
   settings:
     auto_tag: true
@@ -34,7 +34,7 @@ kind: pipeline
 name: build-amd64
 platform: {arch: amd64, os: linux}
 steps:
-- image: plugins/docker
+- image: plugins/docker:19
   name: docker
   settings:
     auto_tag: true
